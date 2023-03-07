@@ -1,0 +1,61 @@
+.container{
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+}
+
+.container form {
+    background-color: #ffffffc2;
+    width: 330px;
+    margin: auto;
+    border-radius: 15px;
+    height: 500px;
+    box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.289), -5px -5px 30px 7px rgba(0, 0, 0, 0.326);
+}
+.container form h1{
+    font-size: 50px;
+    padding-top: 20px;
+    color: #08429a;
+}
+.container form div{
+    padding: 10px;
+    font-size: 25px;
+    color: #08429abf;
+}
+.container form div label{
+    display: flex;
+    margin-left: 12px;
+    
+}
+.username, 
+.password {
+    width: 90%;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 15px;
+    border-radius: 15px;
+    border: none;
+    box-shadow: inset 8px 8px 8px #9e9f9f, inset -8px -8px 8px rgb(255, 255, 255);
+}
+.container form div p{
+    font-size: 18px;
+    margin: 0;
+    color: #b30000;
+}
+.container form  button{
+    padding: 15px 39px 14px 39px;
+    color: #FFF;
+    background-color: #48b5e8e7;
+    font-size: 20px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 10px;
+    width: 50%;
+    border: none;
+    border-width: 1px 1px 3px;
+    box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+    margin-bottom: 10px;
+    transition: 0.4s;
+    transform: scale(0.9);
+    cursor: pointer;
+}

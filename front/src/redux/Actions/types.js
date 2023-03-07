@@ -1,0 +1,4 @@
+export const ADD_MYFAVORITES = 'ADD_MYFAVORITES'
+export const DELETE_MYFAVORITES = 'DELETE_MYFAVORITES'
+export const FILTER = 'FILTER'
+export const ORDER = 'ORDER'

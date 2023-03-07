@@ -1,0 +1,25 @@
+.container{
+    height: 80px;
+    width: 100%;
+    background-color: #2245a4ed;
+    position: relative;
+    font-size: 20px;
+    padding-top: 20px;
+    display: flex;
+}
+
+.hom {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+.hom a{
+    padding: 20px;
+    text-decoration: none;
+    color: #e5edf4;
+}
+.hom a:hover{
+    padding: 20px;
+    text-decoration: none;
+    color: #9fa0a0;
+}

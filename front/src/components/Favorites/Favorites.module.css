@@ -1,0 +1,14 @@
+.container{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+}
+.select{
+    width: 100%;
+    height: 100px;
+}
+.select select{
+    background-color: #d6ebfe;
+    font-size: 16px;
+    margin: 0 10px;
+}
