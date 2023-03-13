@@ -59,7 +59,7 @@ app.get("/rickandmorty/fav", (req, res)=>{
 
 app.post("/rickandmorty/fav", (req, res)=>{
     fav.push(req.body)
-    res.status(200).send("Se guardaron correctamente")
+    res.status(200).json(fav)
 })
 
 app.delete("/rickandmorty/fav/:id", (req, res)=>{
@@ -67,7 +67,7 @@ app.delete("/rickandmorty/fav/:id", (req, res)=>{
 
     const charFilter = fav.filter(char => char.id !== Number(id))
     fav = charFilter;
-    res.status(200).send("Se elimino correctamente")
+    res.status(200).json(charFilter)
 
 })
 module.exports = app;
