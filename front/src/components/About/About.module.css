@@ -1,5 +1,7 @@
 .container{
     padding: 50px;
-    color: #f0ffff;
-    height: 100%;
+    color: #040505;
+    height: 555px;
+    background-color: aliceblue;
+    background-size: 100vh 100vw;
 }

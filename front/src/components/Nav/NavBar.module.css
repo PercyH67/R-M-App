@@ -16,7 +16,8 @@
 .hom a{
     padding: 20px;
     text-decoration: none;
-    color: #e5edf4;
+    font-weight: 600;
+    color: #e8e5f4;
 }
 .hom a:hover{
     padding: 20px;

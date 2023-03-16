@@ -31,7 +31,7 @@ export default function Detail (props){
             </Link>
             <div>
                <h1>{character.name}</h1>
-               <img src={character.image} alt={character.name} />
+               <img style={{borderRadius: "999999px", width: "250px",}} src={character.image} alt={character.name} />
                <h2>STATUS: {character.status}</h2>
                <h2>GENDER: {character.gender}</h2>
                <h2>SPECIE: {character.species}</h2>
