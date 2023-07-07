@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from './Form.module.css'
 import validate from './validate'
 
-export default function Form(props){
+const Form = (props) => {
 
     const [userData, setUserData] = useState({
         username: '',
@@ -26,7 +26,6 @@ export default function Form(props){
             [name]: value
             }))
         )
-        console.log(errors)
     }
 
     const handleSubmit = () =>{
@@ -69,3 +68,4 @@ export default function Form(props){
         </div>
     )
 }
+export default Form;

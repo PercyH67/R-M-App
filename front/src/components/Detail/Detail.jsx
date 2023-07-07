@@ -1,14 +1,13 @@
 import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
-import styles from './Detail.module.css'
 import { Link } from 'react-router-dom';
 
-export default function Detail (props){
-    const {detailId} = useParams();
+const Detail = () => {
+    const {id} = useParams();
     const [character, setCharacter] = useState({})
 
     useEffect(() => {
-        fetch(`http://localhost:3001/rickandmorty/detail/${detailId}`)
+        fetch(`http://localhost:3001/rickandmorty/detail/${id}`)
            .then((response) => response.json())
            .then((char) => {
               if (char.name) {
@@ -21,23 +20,24 @@ export default function Detail (props){
               window.alert('No hay personajes con ese ID');
            });
         return setCharacter({});
-     }, [detailId]);
-     console.log(character);
+     }, [id]);
 
      return( 
-         <div className={styles.container}>
+         <div >
             <Link style={{textDecoration:'none'}} to='/home'>
                <button>Go Back</button>
             </Link>
             <div>
                <h1>{character.name}</h1>
-               <img style={{borderRadius: "999999px", width: "250px",}} src={character.image} alt={character.name} />
+               <img src={character.image} alt={character.name} />
                <h2>STATUS: {character.status}</h2>
                <h2>GENDER: {character.gender}</h2>
                <h2>SPECIE: {character.species}</h2>
-               <h2>ORIGIN: {character.origin?.name}</h2>
+               <h2>ORIGIN: {character.origin}</h2>
             </div>
             
          </div>
     )
 }
+
+export default Detail

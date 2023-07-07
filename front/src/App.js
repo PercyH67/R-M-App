@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import Cards from './components/Cards/Cards.jsx'
-import NavBar from './components/Nav/NavBar'
+import Nav from "./components/Nav/Nav"
 import {Routes, Route, useLocation, useNavigate} from 'react-router-dom'
 import About from './components/About/About'
 import Detail from './components/Detail/Detail'
@@ -13,8 +13,8 @@ function App () {
 
   const [characters, setCharacters] = useState([])
   
-  function onSearch(character) {
-    fetch(`http://localhost:3001/rickandmorty/character/${character}`)
+  function onSearch(id) {
+    fetch(`http://localhost:3001/rickandmorty/character/${id}`)
        .then((response) => response.json())
        .then((data) => {
          if (data.id) { 
@@ -27,7 +27,7 @@ function App () {
  }
 
   const onClose = (id) =>{
-    setCharacters(characters.filter((char) => char.id !== id))
+    setCharacters(characters.filter((char) => char.id !== Number(id)))
   }
   const location = useLocation();
 
@@ -45,17 +45,17 @@ function App () {
 
   useEffect(() => {
     !access && navigate('/');
-  }, [access]);
+  }, [access, navigate]);
 
   return (
     <div className={App}>
-      {location.pathname !== '/' && <NavBar onSearch={onSearch}/>}
+      {location.pathname !== '/' &&  <Nav onSearch={onSearch}/> }
       <Routes>
         <Route path='/' element={<Form login={login}/>}/>
         <Route path='/home' element={<Cards characters={characters} onClose={onClose}/>}/>
         <Route path="/favorites" element={<Favorites />} />
         <Route path='/about' element={<About />}/>
-        <Route path='/detail/:detailId' element={<Detail />}/>
+        <Route path='/detail/:id' element={<Detail />}/>
       </Routes>
     </div>
   )

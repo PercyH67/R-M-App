@@ -1,9 +1,7 @@
 .container{
     text-align: center;
-    padding-top: 53px;
-    height: 700px;
-    background-size: cover;
-    background-image: url("../../../public/fonds-riki.jpg");
+    margin-top: 50px;
+    padding-top: 20px;
 }
 
 .container form {
