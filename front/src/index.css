@@ -1,15 +1,57 @@
-body {
-  margin: 0;
-  background-size: cover;
-  background-size: 100vw 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+  }
+  h1 {
+    @apply text-slate-900 text-3xl font-bold md:text-4xl;
+  }
+  h2 {
+    @apply text-slate-900 text-2xl font-bold md:text-3xl;
+  }
+  h3 {
+    @apply text-slate-900 text-xl font-bold md:text-2xl;
+  }
+  h4,
+  label {
+    @apply text-slate-900 font-bold text-xl;
+  }
+  p,
+  span {
+    @apply text-slate-900 text-base font-bold md:text-lg;
+  }
+  a {
+    @apply text-slate-900 decoration-transparent;
+  }
+}
+/* Estilo del contenedor del scroll */
+::-webkit-scrollbar {
+  width: 10px; /* Ancho del scroll */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Estilo de la pista del scroll (el fondo gris) */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+/* Estilo del pulgar del scroll (el asa) */
+::-webkit-scrollbar-thumb {
+  background-color: #1dc0dd;
+  border-radius: 5px;
+}
+
+/* Estilo del pulgar del scroll al pasar el mouse por encima */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #3377dd;
 }

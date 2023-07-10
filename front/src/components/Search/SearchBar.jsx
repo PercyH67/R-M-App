@@ -9,9 +9,22 @@ const SearchBar = (props) => {
    }
    
    return (
-      <div>
-         <input type='search' name='search' placeholder='Search' onChange={handleChange}/>
-         <button onClick={() => props.onSearch(id)}>Agregar</button> 
+      <div className="px-52">
+         <div className="flex">
+            <input
+               className="flex-1 px-4 py-2 rounded-l-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+               type="search"
+               name="search"
+               placeholder="Search"
+               onChange={handleChange}
+            />
+            <button
+               className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-r-lg"
+               onClick={() => props.onSearch(id)}
+            >
+               Agregar
+            </button>
+         </div>
       </div>
    );
 }

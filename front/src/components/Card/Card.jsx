@@ -44,21 +44,33 @@ const Card = ({ id, name, species, gender, image, onClose}) => {
        dispatch(deleteFav(id))
     }
    return (
-      <div >
-         <div >
-          
-            <button onClick={handleFavorite}>{ !isFav? "🤍" : "❤️" } </button>
-            <button onClick={superDelete}>X</button>
-         </div> 
-               <h2>{name}</h2>
-               
-               <Link style={{textDecoration:'none'}} to={`/Detail/${id}`}>
-                  <img src={image} alt={name} />
-               </Link>
-               <div >
-                  <h3>{species}</h3>
-                  <h3>{gender}</h3>
-               </div>
+      <div className="p-4 rounded shadow-lg bg-slate-200 justify-center w-60 m-5">
+         <div className="flex flex-wrap justify-between items-center ">
+            <button
+               className="text-2xl text-gray-500 transition-colors duration-300 ease-in-out hover:text-red-500 transform hover:scale-125"
+               onClick={handleFavorite}
+            >
+               {!isFav ? "🤍" : "❤️"}
+            </button>
+            <button
+               className="text-xl text-gray-500 transition-colors duration-300 ease-in-out hover:text-red-500 transform hover:scale-125"
+               onClick={superDelete}
+            >
+               X
+            </button>
+         </div>
+         <h2 className="text-2xl font-bold mt-2">{name}</h2>
+         <Link
+            style={{ textDecoration: "none" }}
+            to={`/Detail/${id}`}
+            className="mt-4 block hover:opacity-75 transition-opacity duration-300 ease-in-out"
+         >
+            <img src={image} alt={name} className="w-52 rounded" />
+         </Link>
+         <div className="mt-4">
+            <h3 className="text-lg">{species}</h3>
+            <h3 className="text-lg">{gender}</h3>
+         </div>
       </div>
    );
 }

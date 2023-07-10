@@ -48,7 +48,7 @@ function App () {
   }, [access, navigate]);
 
   return (
-    <div className={App}>
+    <div className=''>
       {location.pathname !== '/' &&  <Nav onSearch={onSearch}/> }
       <Routes>
         <Route path='/' element={<Form login={login}/>}/>
