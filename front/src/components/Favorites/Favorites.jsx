@@ -1,4 +1,4 @@
-import { useDispatch, useSelector  } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card"; 
 import { filterCard, getFav, orderCard } from "../../redux/Actions"; 
 import { useEffect } from "react";
@@ -9,9 +9,12 @@ const Favorites = () => {
     
     const myFavori = useSelector((state) => state.myFavorites)
     
+    useEffect(()=>{
+        dispatch(getFav())
+    }, [dispatch])
+
     const handleClick = (e) =>{
         const {name, value} = e.target
-
         switch(name){
             case 'order':
                 return dispatch(orderCard(value))
@@ -20,10 +23,8 @@ const Favorites = () => {
             default: break
         }
     }
-   useEffect(()=>{
-    dispatch(getFav())
-   }, [dispatch])
-
+    
+    
     return(
         <div className="flex flex-col items-center">
             <div className="flex mb-4 space-x-4">
@@ -57,7 +58,7 @@ const Favorites = () => {
                     species={character.species}
                     gender={character.gender}
                     image={character.image}
-                    onClose={character.onClose}
+                    // onClose={character.onClose}
                     className="bg-white p-4 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out"
                     />
                 ))}

@@ -1,8 +1,7 @@
-const {Favority} = require("../../db")
+const { Favority } = require("../../db")
 
-
-const postFav = async({id, name, gender, species, image}) =>{
-    const data = await Favority.create({id, name, gender, species, image})
+const postFav = async({id, name, gender, species, image, status, origin}) =>{
+    const data = await Favority.create({id, name, gender, species, image, status, origin})
     return data;
 }
 

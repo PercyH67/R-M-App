@@ -1,9 +1,9 @@
-
-const { Favority } = require("../../db")
+const { Favority } = require("../../db");
 
 const getFav = async() =>{
-    const data = await Favority.findAll()
-    return data
+
+    const dataFav = await Favority.findAll();
+    return dataFav;
 }
 
 module.exports = getFav;

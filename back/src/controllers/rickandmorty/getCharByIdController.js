@@ -1,21 +1,9 @@
-const { default: axios } = require("axios");
 
- 
- const url = `https://rickandmortyapi.com/api/character/`;
+const { Character } = require("../../db")
 
  const getCharacter = async(id) =>{
-
-    const data = (await axios.get(url + id)).data
-
-    const infoChar = {
-            id: data.id,
-            name: data.name,
-            gender: data.gender,
-            species: data.species,
-            image: data.image
-        }
-
-        return infoChar
+    const dataCharId = await Character.findByPk(id)
+    return dataCharId;
  }
 
  module.exports = getCharacter;

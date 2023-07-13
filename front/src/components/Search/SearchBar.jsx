@@ -1,11 +1,18 @@
 import { useState } from 'react';
+import { getCharById } from '../../redux/Actions';
+import { useDispatch } from 'react-redux';
 
-const SearchBar = (props) => {
+const SearchBar = () => {
+
+   const dispatch = useDispatch()
    const [id, setId] = useState('')
    
    const handleChange =(e)=>{
       const {value} = e.target;
       setId(value)
+   }
+   const handlerClick = ()=>{
+      dispatch(getCharById(id))
    }
    
    return (
@@ -20,7 +27,7 @@ const SearchBar = (props) => {
             />
             <button
                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-r-lg"
-               onClick={() => props.onSearch(id)}
+               onClick={handlerClick}
             >
                Agregar
             </button>

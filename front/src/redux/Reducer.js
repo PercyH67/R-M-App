@@ -1,50 +1,48 @@
-import { ADD_CHARACTER, DELETE_FAV, ADD_FAV, FILTER, ORDER, GET_FAV} from "./Actions"
+import { DELETE_FAV, ADD_FAV, FILTER, ORDER, GET_FAV, GET_CHAR_BY_ID, ADD_CHAR, DELETE_CHAR} from "./Actions"
 
 const initialState = {
-    allRick: [],
+    characters: [],
+    favorites:[],
     myFavorites: [],
     allFavorites:[],
-    allCharacter: []
+    allCharacter: [],
+    allDetail:[],
 }
 
-function rootReducer  (state = initialState, action){
-    switch (action.type) {
-        case ADD_CHARACTER:
-            return {
-                ...state,
-                allRick: action.payload
-            }
+const rootReducer = (state = initialState, { type, payload }) =>{
+    switch (type) {
+
         case GET_FAV:
             return {
                 ...state,
-                allFavorites: action.payload
+                favorites: payload,
+                myFavorites: payload
             }
         case ADD_FAV:
             return {
                 ...state,
-                myFavorites: [...state.allCharacter, action.payload],
-                allCharacter: [...state.allCharacter, action.payload],
+                myFavorites: [...state.myFavorites, payload],
               
             }
         case DELETE_FAV:
-            const deleteFavorite = state.myFavorites.filter(fav => fav.id !== action.payload)
+            const deleteFavorite = state.myFavorites.filter(fav => fav.id !== payload)
             return {
                 ...state,
                 myFavorites: deleteFavorite
             }
             case FILTER:
-                const filterCopy = [...state.allCharacter]
-                const filter = filterCopy.filter(ch => ch.gender === action.payload)
+                const filterCopy = [...state.favorites]
+                const filter = filterCopy.filter(ch => ch.gender === payload)
                 return {
                     ...state,
                     myFavorites: filter
                 }
             case ORDER:
                 const newOrder = [...state.myFavorites].sort((a, b) => {
-                    if ("Ascendente" === action.payload) {
+                    if ("Ascendente" === payload) {
                       return a.id - b.id
                     }
-                    if ("Descendente" === action.payload) {
+                    if ("Descendente" === payload) {
                       return b.id - a.id
                     }
                     return 0;
@@ -53,7 +51,25 @@ function rootReducer  (state = initialState, action){
                     ...state,
                     myFavorites: newOrder
                 }
-    
+            case ADD_CHAR:
+                return {
+                    ...state,
+                    characters: payload
+                }
+            case GET_CHAR_BY_ID:
+                return {
+                    ...state,
+                    allCharacter:[...state.allCharacter, payload],
+                    allDetail: payload
+                }
+
+            case DELETE_CHAR:
+                const deleteChar = state.allCharacter.filter(char => char.id !== payload)
+                return {
+                    ...state,
+                    allCharacter: deleteChar
+                }
+        
         default:
             return {...state}
     }

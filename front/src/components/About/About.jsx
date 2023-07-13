@@ -1,7 +1,7 @@
 import React from "react";
-import iconoIn from "../../assets/Linkedin.png";
-import iconoGit from "../../assets/github.png";
-import iconoCv from "../../assets/iconCv.png";
+// import iconoIn from "../../assets/Linkedin.png";
+// import iconoGit from "../../assets/github.png";
+// import iconoCv from "../../assets/iconCv.png";
 import {
   SiTailwindcss,
   SiRedux,

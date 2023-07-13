@@ -11,24 +11,6 @@ import Favorites from './components/Favorites/Favorites'
 
 function App () {
 
-  const [characters, setCharacters] = useState([])
-  
-  function onSearch(id) {
-    fetch(`http://localhost:3001/rickandmorty/character/${id}`)
-       .then((response) => response.json())
-       .then((data) => {
-         if (data.id) { 
-           setCharacters((oldChars) => [...oldChars, data]);
-          } else {
-            window.alert('No hay personajes con ese ID');
-          }
-        })
-        .catch(err => console(err))
- }
-
-  const onClose = (id) =>{
-    setCharacters(characters.filter((char) => char.id !== Number(id)))
-  }
   const location = useLocation();
 
   const navigate = useNavigate();
@@ -49,10 +31,10 @@ function App () {
 
   return (
     <div className=''>
-      {location.pathname !== '/' &&  <Nav onSearch={onSearch}/> }
+      {location.pathname !== '/' &&  <Nav/> }
       <Routes>
         <Route path='/' element={<Form login={login}/>}/>
-        <Route path='/home' element={<Cards characters={characters} onClose={onClose}/>}/>
+        <Route path='/home' element={<Cards/>}/>
         <Route path="/favorites" element={<Favorites />} />
         <Route path='/about' element={<About />}/>
         <Route path='/detail/:id' element={<Detail />}/>

@@ -2,35 +2,32 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { addFav, deleteFav } from "../../redux/Actions";
-import axios from "axios"
+import { addFav, deleteChar, deleteFav} from "../../redux/Actions";
 
-const Card = ({ id, name, species, gender, image, onClose}) => {
+const Card = ({ id, name, species, gender, image }) => {
 
    const [isFav, setIsFav] = useState(false)
+
    const dispatch = useDispatch()
-   const myFavori = useSelector((state) => state.myFavorites)
+   const myFavori = useSelector((state) => state.favorites)
 
    
-   const handleFavorite = async() => {
+   const handleFavorite = () => {
       if (isFav) {
-         setIsFav(false)
-         dispatch(deleteFav(id))
-      } else{
-         setIsFav(true)
-         dispatch(addFav({id, name, species, gender, image, onClose}))
-
-         const data = {id, name, species, gender, image}
-         try {
-           await axios.post("http://localhost:3001/rickandmorty/fav", data)
-            
-         } catch (error) {
-           return error
-         }
+        dispatch(deleteFav(id));
+        setIsFav(false);
+      } else {
+        dispatch(addFav({ id, name, species, gender, image }));
+        setIsFav(true);
       }
-   }
-
-   useEffect(() =>{
+    };
+    
+   const handleDelete = () => {
+      dispatch(deleteChar(id));
+      dispatch(deleteFav(id))
+    };
+    
+    useEffect(() =>{
       myFavori.forEach(fav => {
          if (fav.id === id) {
             setIsFav(true)
@@ -39,38 +36,45 @@ const Card = ({ id, name, species, gender, image, onClose}) => {
    }, [myFavori, id])
 
 
-   const superDelete = () => {
-       onClose(id)
-       dispatch(deleteFav(id))
-    }
    return (
-      <div className="p-4 rounded shadow-lg bg-slate-200 justify-center w-60 m-5">
-         <div className="flex flex-wrap justify-between items-center ">
+      <div
+         className="p-4 rounded-lg shadow-xl bg-gray-100 justify-center w-60 h-80 m-5 transform hover:scale-105 transition-transform duration-500 ease-in-out"
+         style={{
+            backgroundImage: `url(${image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+         }}
+         >
+         <div className="flex flex-wrap justify-between items-center">
             <button
-               className="text-2xl text-gray-500 transition-colors duration-300 ease-in-out hover:text-red-500 transform hover:scale-125"
+               className="text-xl text-gray-500 transition-colors duration-300 ease-in-out hover:text-red-500 transform hover:scale-125"
                onClick={handleFavorite}
             >
                {!isFav ? "🤍" : "❤️"}
             </button>
             <button
                className="text-xl text-gray-500 transition-colors duration-300 ease-in-out hover:text-red-500 transform hover:scale-125"
-               onClick={superDelete}
+               onClick={handleDelete}
             >
                X
             </button>
          </div>
-         <h2 className="text-2xl font-bold mt-2">{name}</h2>
          <Link
             style={{ textDecoration: "none" }}
-            to={`/Detail/${id}`}
-            className="mt-4 block hover:opacity-75 transition-opacity duration-300 ease-in-out"
-         >
-            <img src={image} alt={name} className="w-52 rounded" />
+            to={`/detail/${id}`}
+            className="mt-4 block hover:opacity-90 transition-opacity duration-300 ease-in-out"
+            >
+            <h2 className="text-2xl font-extrabold mt-4 bg-slate-400 bg-opacity-70 text-center">{name}</h2>
+
+            <div className="mt-40 bg-slate-400 bg-opacity-50">
+               <h3 className="text-lg text-yellow-50 ">
+                  {species}
+               </h3>
+               <h3 className="text-lg text-yellow-50">
+                  {gender}
+               </h3>
+            </div>
          </Link>
-         <div className="mt-4">
-            <h3 className="text-lg">{species}</h3>
-            <h3 className="text-lg">{gender}</h3>
-         </div>
       </div>
    );
 }

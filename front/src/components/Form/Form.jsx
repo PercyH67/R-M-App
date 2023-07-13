@@ -34,7 +34,8 @@ const Form = (props) => {
     return (
         <div className={styles.container}>
             <form onSubmit={handleSubmit}>
-                <h1>Login up</h1>
+                <h1>Login</h1>
+                <h3 className="text-blue-400 py-4">Rick And Morty</h3>
                 <div>
                     <label>Username:</label>
                     <input 

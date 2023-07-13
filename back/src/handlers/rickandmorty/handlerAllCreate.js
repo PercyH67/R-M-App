@@ -2,6 +2,7 @@
 const allBulkCreate = require("../../controllers/rickandmorty/allCreateController")
 
 const handlerAllCreate = async(req, res) =>{
+  
     try {
         const all = await allBulkCreate();
         res.status(200).json(all);
