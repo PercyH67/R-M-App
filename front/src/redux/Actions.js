@@ -8,6 +8,8 @@ export const FILTER = "FILTER"
 export const GET_FAV = "GET_FAV"
 export const GET_CHAR_BY_ID = "GET_CHAR_BY_ID"
 export const DELETE_CHAR = "DELETE_CHAR"
+export const POST_USER = "POST_USER"
+export const LOGIN_USER = "LOGIN_USER"
 
 export const getCharById = (id) =>{
     return async (dispatch) =>{
@@ -79,5 +81,29 @@ export const deleteChar = (id) => {
     return {
         type: DELETE_CHAR,
         payload : id
+    }
+}
+
+export const postUser = (registerData) => {
+    return async (dispatch) =>{
+        try {
+            const data  = await axios.post("http://localhost:3001/user/register", registerData)
+            dispatch({type: POST_USER, payload: data})
+            return data
+        } catch (error) {
+            return error
+        }
+    }
+}
+
+export const loginUser = (loginData) => {
+    return async (dispatch) =>{
+        try {
+            const data = await axios.post("http://localhost:3001/user", loginData)
+            dispatch({type: LOGIN_USER, payload: data})
+            return data
+        } catch (error) {
+            return error
+        }
     }
 }

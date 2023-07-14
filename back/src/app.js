@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan')
 const app = express()
 
-const routeRick = require("./routes/rickand.routes.js")
+const routeRick = require("./routes/rickand.routes.js");
+const routeUser = require("./routes/user.routes.js");
 
 // // Midelweres
 // app.use(bodyParser.urlencoded({ extended: false, limit: '50mb' }));
@@ -24,5 +25,6 @@ app.use((req, res, next) => {
 
 // Routes
 app.use("/rickandmorty", routeRick)
+app.use("/user", routeUser)
 
 module.exports = app;

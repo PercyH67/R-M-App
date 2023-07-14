@@ -1,12 +1,14 @@
-import { DELETE_FAV, ADD_FAV, FILTER, ORDER, GET_FAV, GET_CHAR_BY_ID, ADD_CHAR, DELETE_CHAR} from "./Actions"
+import { DELETE_FAV, ADD_FAV, FILTER, ORDER, GET_FAV, GET_CHAR_BY_ID, ADD_CHAR, DELETE_CHAR, POST_USER, LOGIN_USER} from "./Actions"
 
 const initialState = {
     characters: [],
-    favorites:[],
+    favorites: [],
     myFavorites: [],
-    allFavorites:[],
+    allFavorites: [],
     allCharacter: [],
-    allDetail:[],
+    allDetail: [],
+    allUser: [],
+    dataUser: '',
 }
 
 const rootReducer = (state = initialState, { type, payload }) =>{
@@ -68,6 +70,17 @@ const rootReducer = (state = initialState, { type, payload }) =>{
                 return {
                     ...state,
                     allCharacter: deleteChar
+                }
+            case POST_USER:
+                return {
+                    ...state,
+                    allUser: [...state.allUser, payload]
+                }
+        
+            case LOGIN_USER:
+                return {
+                    ...state,
+                    dataUser: payload
                 }
         
         default:

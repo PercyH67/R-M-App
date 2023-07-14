@@ -1,4 +1,4 @@
-export default function validateLogin (inputs){
+export default function validateRegister (inputs){
     const errors ={};
 
     const regexEmail = /\S+@\S+\.\S+/;
